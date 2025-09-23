@@ -12,19 +12,20 @@ on:
         - name: Checkout code
           uses: actions/checkout@v4
        
-        - name: Setup Node.Js
+        - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
             node-version: "20"
        
         - name: Install dependencies
-          run: npm Install
+          run: npm install
        
         - name: Generate Prisma Client
           run: npx prisma generate
+
         - name: Deploy to Render
           uses: johnbeynon/render-deploy-action@v0.0.8  
           with:
             service-id: ${{ secrets.RENDER_SERVICE_ID }}
             api-key: ${{ secrets.RENDER_API_KEY }}
-            wait-for-success: true
+            
