@@ -19,6 +19,10 @@ app.get("/users", async (req, res) => {
     res.json(users);
 });
 
+app.get("/health", async (req, res) => {
+    res.status(200).json({status: "ok", uptime: process.uptime()})
+});
+
 app.get("/user/:id", async (req, res) => {
   try {
     const { id } = req.params;
